@@ -9,9 +9,11 @@ public class BulletBehaviour : MonoBehaviour
     public float speed;
     public Bounds bulletBounds;
 
+    private BulletManager bulletManager;
+
     void Start()
     {
-        
+        bulletManager = GameObject.FindObjectOfType<BulletManager>();
     }
 
     void FixedUpdate()
@@ -30,7 +32,9 @@ public class BulletBehaviour : MonoBehaviour
     {
         if(transform.position.y < bulletBounds.max)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+
+            bulletManager.ReturnBullet(this.gameObject);
         }
     }
 }
